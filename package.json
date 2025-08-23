@@ -1,0 +1,48 @@
+{
+    "name": "base-bailey-memory",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "type": "module",
+    "scripts": {
+        "dev": "node ./node_modules/tsx/dist/cli.cjs ./src/index.ts",
+        "build": "node ./node_modules/rollup/dist/bin/rollup -c",
+        "start": "node dist/index.js"
+    },
+    "keywords": [],
+    "dependencies": {
+        "@bot-whatsapp/bot": "0.0.223-alpha.0",
+        "@bot-whatsapp/cli": "latest",
+        "@bot-whatsapp/database": "latest",
+        "@bot-whatsapp/portal": "latest",
+        "@bot-whatsapp/provider": "latest",
+        "@google/generative-ai": "^0.24.1",
+        "@whiskeysockets/baileys": "^6.4.0",
+        "bot-ws-plugin-openai": "^1.0.6",
+        "dotenv": "^16.3.1",
+        "express": "^4.18.2",
+        "openai": "^4.24.1",
+        "sharp": "^0.34.2",
+        "wa-sticker-formatter": "4.3.2"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@rollup/plugin-node-resolve": "^15.2.3",
+        "@rollup/plugin-terser": "^0.4.4",
+        "@types/express": "^4.17.21",
+        "@types/node": "^20.10.6",
+        "rollup": "^4.9.2",
+        "rollup-plugin-typescript2": "^0.35.0",
+        "tsx": "^3.14.0"
+    },
+    "packageManager": "pnpm@10.5.1+sha512.c424c076bd25c1a5b188c37bb1ca56cc1e136fbf530d98bcb3289982a08fd25527b8c9c4ec113be5e3393c39af04521dd647bcf1d0801eaf8ac6a7b14da313af",
+    "pnpm": {
+        "onlyBuiltDependencies": [
+            "@whiskeysockets/baileys",
+            "esbuild",
+            "protobufjs",
+            "sharp"
+        ]
+    }
+}
