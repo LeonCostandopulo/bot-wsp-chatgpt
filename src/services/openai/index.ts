@@ -1,5 +1,5 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { generatePrompt, generatePromptDetermine } from "./prompt";
+import { generatePrompt, generatePromptDetermine } from "./prompt.js";
 
 export interface Message {
     role: 'user' | 'assistant';
@@ -31,15 +31,25 @@ const initializeModel = async () => {
         model = genAI.getGenerativeModel({ model: "models/gemini-1.5-flash" });
         console.log('Conexión exitosa con el modelo Gemini 1.5 flash');
 
-    } catch (error) {
-        console.error('Error al inicializar GoogleGenerativeAI:', error);
+    } catch (error: unknown) {
+        const err = error instanceof Error ? error : undefined;
+        console.error('Error al inicializar GoogleGenerativeAI:', {
+            error,
+            stack: err?.stack,
+            message: err?.message
+        });
         throw error;
     }
 };
 
 // Inicializar el modelo al iniciar
-initializeModel().catch(error => {
-    console.error('Error inicializando el modelo:', error);
+initializeModel().catch((error: unknown) => {
+    const err = error instanceof Error ? error : undefined;
+    console.error('Error inicializando el modelo:', {
+        error,
+        stack: err?.stack,
+        message: err?.message
+    });
     process.exit(1);
 });
 
@@ -61,15 +71,15 @@ export const run = async (name: string, history: Message[]): Promise<string> => 
         }
 
         try {
-            // Formatear los mensajes para Gemini
+            // Formatear los mensajes para Gemini (sin rol system)
             const formattedMessages = {
                 contents: [
                     {
-                        role: 'system',
+                        role: 'user',
                         parts: [{ text: prompt }]
                     },
                     ...history.map(msg => ({
-                        role: msg.role,
+                        role: msg.role === 'assistant' ? 'model' : 'user',
                         parts: [{ text: msg.content }]
                     }))
                 ]
@@ -87,19 +97,21 @@ export const run = async (name: string, history: Message[]): Promise<string> => 
             const text = response.text();
             console.log('Respuesta generada:', text);
             return text;
-        } catch (error) {
+        } catch (error: unknown) {
+            const err = error instanceof Error ? error : undefined;
             console.error('Error en generateContent:', {
                 error,
-                stack: error?.stack,
+                stack: err?.stack,
                 prompt,
                 history
             });
-            throw new Error('Error generando respuesta: ' + error.message);
+            throw new Error('Error generando respuesta' + (err?.message ? ': ' + err.message : ''));
         }
-    } catch (error) {
+    } catch (error: unknown) {
+        const err = error instanceof Error ? error : undefined;
         console.error('Error al generar respuesta:', {
             error,
-            stack: error?.stack,
+            stack: err?.stack,
             name
         });
         throw error;
@@ -144,19 +156,21 @@ export const runDetermine = async (history: Message[]): Promise<string> => {
             const text = response.text();
             console.log('Respuesta determinada:', text);
             return text;
-        } catch (error) {
+        } catch (error: unknown) {
+            const err = error instanceof Error ? error : undefined;
             console.error('Error en generateContent:', {
                 error,
-                stack: error?.stack,
+                stack: err?.stack,
                 prompt,
                 history
             });
-            throw new Error('Error determinando respuesta: ' + error.message);
+            throw new Error('Error determinando respuesta' + (err?.message ? ': ' + err.message : ''));
         }
-    } catch (error) {
+    } catch (error: unknown) {
+        const err = error instanceof Error ? error : undefined;
         console.error('Error al determinar respuesta:', {
             error,
-            stack: error?.stack
+            stack: err?.stack
         });
         throw error;
     }

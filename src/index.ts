@@ -1,9 +1,9 @@
 import "dotenv/config";
 import BotWhatsapp from '@bot-whatsapp/bot';
-import database from './database';
-import provider from './provider';
-import flow from './flow';
-import { initServer } from "./services/http";
+import database from './database/index.js';
+import provider from './provider/index.js';
+import flow from './flow/index.js';
+import { initServer } from "./services/http/index.js";
 
 /**
  * Funcion principal del bot
@@ -18,18 +18,14 @@ const main = async () => {
             flow
         });
 
-        console.log('Bot inicializado correctamente');
-        
-        // Iniciar el bot
-        botInstance.init();
+        console.log('Bot creado correctamente');
 
         // Iniciar el servidor
         initServer(botInstance);
         console.log('Servidor HTTP inicializado');
         
-        // Iniciar el proveedor
-        await provider.start();
-        console.log('Proveedor conectado y listo');
+        // El proveedor Baileys es gestionado por createBot en esta versión
+        console.log('Proveedor listo');
 
     } catch (error) {
         console.error('❌ Error al iniciar el bot:', error);

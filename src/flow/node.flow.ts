@@ -1,7 +1,6 @@
 import BotWhatsapp from '@bot-whatsapp/bot';
-import flowDynamic from '../flow';
-import { generatePrompt, generatePromptDetermine } from '../services/openai';
-import { isChatArchived, isGroupChat } from '../services/chat';
+import { generatePrompt, generatePromptDetermine } from '../services/openai/index.js';
+import { isChatArchived, isGroupChat } from '../services/chat.js';
 
 /**
  * Un flujo conversacion que responder a las palabras claves relacionadas con los servicios de la barbería
@@ -26,7 +25,7 @@ export default BotWhatsapp.addKeyword(['servicios', 'precios', 'horarios'])
             const name = ctx.body || 'Amigo';
             
             // Generar respuesta usando Gemini
-            const response = await flowDynamic(generatePrompt(name));
+            const response = await flow.flowDynamic(generatePrompt(name));
             
             return response;
         }

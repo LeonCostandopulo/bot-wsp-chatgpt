@@ -5,9 +5,9 @@
  * @returns true si el chat está archivado, false si no
  */
 export const isChatArchived = async (ctx: any, state: any): Promise<boolean> => {
-    // Verificar si existe un estado de chat archivado
-    const chatState = state.getMyState()?.chatState ?? {};
-    
+    // Verificar si existe un estado de chat archivado de forma segura
+    const chatState = state?.getMyState?.()?.chatState ?? {};
+
     // Si no existe estado, asumimos que no está archivado
     if (!chatState.archived) {
         return false;
@@ -49,11 +49,22 @@ export const unarchiveChat = async (ctx: any, state: any): Promise<void> => {
  * Lista de números de teléfono autorizados (temporal para pruebas)
  */
 const AUTHORIZED_NUMBERS = [
-    '5491128571905',
-    '+5491128571905'
-    // Agrega aquí los números de teléfono autorizados
+    
+    
+    '5491128571905', //mama
+    '+5491128571905', 
+    
+    //'+5491165611373', 
+    //'5491165611373',
+    // Números utilizados en los tests
+    // '5491128571905', //copa
+    // '+5491128571905',
+
+    //'5491122367271',//jm
+    //'+5491122367271',//jm
+
+    // Agrega aquí los números de teléfono autorizados en formato canónico E.164 (con +)
     // Ejemplo: '+5491112345678',
-    // Puedes agregar más números separados por comas
 ];
 
 /**
@@ -67,31 +78,21 @@ export const isAuthorizedNumber = (from: string): boolean => {
         const cleanNumber = from.replace(/[^0-9+]/g, '');
         
         // Crear todas las variantes posibles
-        const variants = [
-            cleanNumber, // sin prefijos
-            `+${cleanNumber.replace('+', '')}`, // con +
-            cleanNumber.replace('+', '') // sin +
-        ];
+        const base = cleanNumber.replace('+', '');
+        const variantsSet = new Set<string>([base, `+${base}`]);
 
-        console.log('Verificando número:', {
-            original: from,
-            limpio: cleanNumber,
-            variantes: variants,
-            autorizados: AUTHORIZED_NUMBERS
-        });
+        // Caso Argentina: si empieza con 54 y NO tiene 9, generar variante con 9
+        const arMatch = base.match(/^54(?!9)(\d+)/);
+        if (arMatch) {
+            const withNine = `549${arMatch[1]}`;
+            variantsSet.add(withNine);
+            variantsSet.add(`+${withNine}`);
+        }
+
+        const variants = Array.from(variantsSet);
 
         // Verificar cada variante
-        const isAuthorized = variants.some(variant => {
-            const isMatch = AUTHORIZED_NUMBERS.includes(variant);
-            console.log(`Verificando variante ${variant}: ${isMatch ? '✅' : '❌'}`);
-            return isMatch;
-        });
-
-        console.log('Resultado final:', {
-            numero: from,
-            autorizado: isAuthorized,
-            variantes: variants
-        });
+        const isAuthorized = variants.some(variant => AUTHORIZED_NUMBERS.includes(variant));
 
         return isAuthorized;
     } catch (error) {

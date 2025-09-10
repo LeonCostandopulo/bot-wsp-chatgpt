@@ -2,16 +2,15 @@
   key: {
     remoteJid: '5491128571905@s.whatsapp.net',
     fromMe: false,
-    id: '1CD7C7B2ABC943EC8B3B7CA6F739FC69',
+    id: '3EB020914494CCD93E2F09',
     participant: undefined
   },
-  messageTimestamp: 1750706837,
+  messageTimestamp: 1756057426,
   pushName: 'Miriam 🐾💞',
   broadcast: false,
   message: Message {
     extendedTextMessage: ExtendedTextMessage {
-      text: 'Hola',
-      previewType: 0,
+      text: 'hola',
       contextInfo: [ContextInfo],
       inviteLinkGroupTypeV2: 0
     },
@@ -21,12 +20,12 @@
       messageSecret: [Uint8Array]
     }
   },
-  body: 'Hola',
+  body: 'hola',
   from: '5491128571905'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_db1e7fe8-4f9a-4d6d-b55c-038ce59da8cb',
-  keyword: 'key_184ef49a-e499-474c-867e-4f5ba4ce1deb',
+  ref: 'ans_276f3c41-738d-4051-9233-80ef6c04bf1e',
+  keyword: 'key_259696f9-aa4b-4cde-babb-c9fc3c22b2a4',
   answer: '__call_action__',
   options: {
     media: null,
@@ -40,22 +39,21 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '72c94e634725b8d698552bc33679cdd0'
+  refSerialize: 'd5be458d034fd991ee11c07985d4c49a'
 }
 [handleMsg]:  {
   key: {
     remoteJid: '5491128571905@s.whatsapp.net',
     fromMe: false,
-    id: 'AF56CDB6FBA0DC510E5D4F37FE011AD2',
+    id: '3EB0A5050A279FDE0A7B84',
     participant: undefined
   },
-  messageTimestamp: 1750706842,
+  messageTimestamp: 1756057458,
   pushName: 'Miriam 🐾💞',
   broadcast: false,
   message: Message {
     extendedTextMessage: ExtendedTextMessage {
-      text: 'Turno',
-      previewType: 0,
+      text: 'hola',
       contextInfo: [ContextInfo],
       inviteLinkGroupTypeV2: 0
     },
@@ -65,12 +63,12 @@
       messageSecret: [Uint8Array]
     }
   },
-  body: 'Turno',
+  body: 'hola',
   from: '5491128571905'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_22b686f3-f8cd-4cb6-8d2d-0791be84b08c',
-  keyword: 'key_a2b5c3f0-5395-4672-bc66-7580c5a9e403',
+  ref: 'ans_276f3c41-738d-4051-9233-80ef6c04bf1e',
+  keyword: 'key_259696f9-aa4b-4cde-babb-c9fc3c22b2a4',
   answer: '__call_action__',
   options: {
     media: null,
@@ -84,93 +82,5 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '010e213f72e89cfdf1eb4f7ec575f6a0'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '5491128571905@s.whatsapp.net',
-    fromMe: false,
-    id: 'A66F9E7D4FD13206661E2A31B7032616',
-    participant: undefined
-  },
-  messageTimestamp: 1750706847,
-  pushName: 'Miriam 🐾💞',
-  broadcast: false,
-  message: Message {
-    extendedTextMessage: ExtendedTextMessage {
-      text: 'Quiero un turno',
-      previewType: 0,
-      contextInfo: [ContextInfo],
-      inviteLinkGroupTypeV2: 0
-    },
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2,
-      messageSecret: [Uint8Array]
-    }
-  },
-  body: 'Quiero un turno',
-  from: '5491128571905'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_22b686f3-f8cd-4cb6-8d2d-0791be84b08c',
-  keyword: 'key_a2b5c3f0-5395-4672-bc66-7580c5a9e403',
-  answer: '__call_action__',
-  options: {
-    media: null,
-    buttons: [],
-    capture: false,
-    child: null,
-    delay: 0,
-    idle: null,
-    ref: null,
-    nested: [],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: '010e213f72e89cfdf1eb4f7ec575f6a0'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '5491128571905@s.whatsapp.net',
-    fromMe: false,
-    id: '5D9EDE8DCDEA70D11DE8F72CF3E6F2E9',
-    participant: undefined
-  },
-  messageTimestamp: 1750706850,
-  pushName: 'Miriam 🐾💞',
-  broadcast: false,
-  message: Message {
-    extendedTextMessage: ExtendedTextMessage {
-      text: 'Corte de pelo',
-      previewType: 0,
-      contextInfo: [ContextInfo],
-      inviteLinkGroupTypeV2: 0
-    },
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2,
-      messageSecret: [Uint8Array]
-    }
-  },
-  body: 'Corte de pelo',
-  from: '5491128571905'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_22b686f3-f8cd-4cb6-8d2d-0791be84b08c',
-  keyword: 'key_a2b5c3f0-5395-4672-bc66-7580c5a9e403',
-  answer: '__call_action__',
-  options: {
-    media: null,
-    buttons: [],
-    capture: false,
-    child: null,
-    delay: 0,
-    idle: null,
-    ref: null,
-    nested: [],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: '010e213f72e89cfdf1eb4f7ec575f6a0'
+  refSerialize: 'd5be458d034fd991ee11c07985d4c49a'
 }

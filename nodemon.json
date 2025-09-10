@@ -1,0 +1,15 @@
+{
+  "watch": ["src/"],
+  "ext": "ts,js,json",
+  "ignore": [
+    "dist/",
+    "node_modules/",
+    "bot_sessions/",
+    "*.log",
+    "**/*.test.ts",
+    "coverage/"
+  ],
+  "env": {
+    "NODE_ENV": "development"
+  }
+}
